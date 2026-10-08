@@ -18,3 +18,4 @@
 - [x] README with setup for Claude Code, Codex, Cursor
 - [x] Real check: Claude Code and Codex talk through a channel
 - [x] Publish to GitHub (CynaCons/powerboard)
+- [x] Owner setup: released 0.1.0 installed from GitHub; registered in Claude Code (user scope, connected), Codex (tool_timeout_sec 300) and Cursor; Codex and Cursor each called channels successfully
