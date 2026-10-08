@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "powerboard"
+dynamic = ["version"]
+description = "Named channels so AI agents in Claude Code, Codex and Cursor can talk to each other"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "CynaCons" }]
+keywords = ["mcp", "agents", "claude", "codex", "cursor", "coordination"]
+dependencies = [
+  "mcp>=1.2,<2",  # FastMCP; 2.x changed the server API
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+powerboard = "powerboard.cli:main"
+
+[project.urls]
+Repository = "https://github.com/CynaCons/powerboard"
+
+[tool.setuptools]
+packages = ["powerboard"]
+
+[tool.setuptools.dynamic]
+version = { attr = "powerboard.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
