@@ -17,4 +17,4 @@
 - [x] Tests (store, waiting across processes, MCP stdio round trip) + CI (Windows + Ubuntu)
 - [x] README with setup for Claude Code, Codex, Cursor
 - [x] Real check: Claude Code and Codex talk through a channel
-- [ ] Publish to GitHub (CynaCons/powerboard)
+- [x] Publish to GitHub (CynaCons/powerboard)
