@@ -20,9 +20,9 @@
 - [x] Publish to GitHub (CynaCons/powerboard)
 - [x] Owner setup: released 0.1.0 installed from GitHub; registered in Claude Code (user scope, connected), Codex (tool_timeout_sec 300) and Cursor; Codex and Cursor each called channels successfully
 
-### v0.2.0 — Long waits: up to 12 hours (2026-10-10) (current) (ACTIVE)
+### v0.2.0 — Long waits: up to 12 hours (2026-10-10) (COMPLETE)
 **Goal:** read(wait_seconds) can wait up to 12 h (owner: "a day or half a day"). Measured 2026-10-10: Claude Code sends notifications/cancelled at its timeout; Codex 0.161 abandons the call without cancelling, so Codex's tool_timeout_sec must be at least the longest wait.
 - [x] Server: MAX_WAIT 12 h (POWERBOARD_MAX_WAIT), Cursor CLI stays 50 s, progress every 30 s; instructions + read description say how long to wait
 - [x] README: Codex tool_timeout_sec = 43200 and why (Codex abandons without cancel); measured limits per app
 - [x] Real check: 20-minute waits in Claude Code and Codex receive a message posted after ~18 minutes
-- [ ] Release 0.2.0: version bump, push, reinstall for the owner, Codex config tool_timeout_sec 43200
+- [x] Release 0.2.0: version bump, push, reinstall for the owner, Codex config tool_timeout_sec 43200
