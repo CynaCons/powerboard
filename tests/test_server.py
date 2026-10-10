@@ -92,3 +92,22 @@ def test_stdio_round_trip(db_path):
     finally:
         p.stdin.close()
         p.wait(timeout=10)
+
+
+def test_wait_limits(monkeypatch):
+    class Ctx:
+        def __init__(self, name):
+            self.session = type("S", (), {"client_params": type("P", (), {
+                "clientInfo": type("I", (), {"name": name})()})()})()
+
+    monkeypatch.delenv("POWERBOARD_MAX_WAIT", raising=False)
+    import importlib
+    fresh = importlib.reload(server)
+    try:
+        assert fresh.MAX_WAIT == 12 * 3600
+        assert fresh._wait_limit(Ctx("claude-code")) == 12 * 3600
+        assert fresh._wait_limit(Ctx("codex-mcp-client")) == 12 * 3600
+        assert fresh._wait_limit(Ctx("Cursor")) == 50  # Cursor CLI cancels at 60 s
+        assert fresh._wait_limit(None) == 12 * 3600
+    finally:
+        importlib.reload(server)
